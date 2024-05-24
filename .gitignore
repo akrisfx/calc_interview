@@ -8,6 +8,7 @@
 *.obj
 .vs/
 out/
+build/
 
 # Precompiled Headers
 *.gch

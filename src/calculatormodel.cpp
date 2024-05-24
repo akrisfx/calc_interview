@@ -172,7 +172,7 @@ void CalculatorModel::ParseString(const std::string& problem)
 	// off-top: очень хочеться верить что branch optimisation тут отрабатывает
 	// и мне не нужно в каждой проверке continue ставить
 	{
-		if (problem[step] == ' ')
+		if (problem[step] == ' ') //spaghetti 
 		{
 			continue;
 		}
@@ -299,7 +299,7 @@ void CalculatorModel::Calculate(std::stack<Token>& numbers, int operation)
 			{
 				calc.right_operand = numbers.top().value;
 				numbers.pop();
-			}
+			} 
 			calc.ArithmeticCalculation();
 		}
 		else

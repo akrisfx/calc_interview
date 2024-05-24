@@ -57,5 +57,5 @@ void VarResolver::ReplaceBrackets(std::string& str_expr)
 
 void VarResolver::ReplaceSubstring(const std::string& from, const std::string& to)
 {
-	expression_ = std::regex_replace(expression_, std::regex(from), to);
+	expression_ = std::regex_replace(expression_, std::regex(from), to); 
 }

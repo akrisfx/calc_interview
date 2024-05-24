@@ -34,7 +34,7 @@ enum TokenPriority {
 };
 
 // Structure representing a token in the mathematical expression.
-struct Token {
+struct Token { 
     double value{};
     TokenType type{};
     TokenPriority priority{};

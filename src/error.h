@@ -21,7 +21,7 @@ public:
 
 	err_type_t err_type;
 	int err_place;
-private:
+private: 
 	void PrintPointerToErr(const std::string& str) const;
 };
 

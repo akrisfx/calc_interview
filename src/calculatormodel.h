@@ -38,7 +38,7 @@ private:
 	void PasteValue(std::string& problem, const std::string& number);
 	void ParseOperators(std::string& problem, int& step);
 	void ValidateString(const std::string& problem);
-	void PasteValue(std::string& problem, std::string& number);
+	void PasteValue(std::string& problem, std::string& number); 
 	void ParseString(const std::string& problem);
 	// Stack and Calculation Functions
 	void ReverseStack();

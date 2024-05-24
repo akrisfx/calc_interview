@@ -16,7 +16,7 @@ int main(int argc, char** argv)
 	{
 		auto calc = CalculatorModel();
 		auto result = calc.RunModelCalculation(str);
-		if(result.err_type == NO_ERROR)
+		if(result.err_type == NO_ERROR) 
 		{
 			std::cout << calc.GetResult();
 		}

@@ -25,7 +25,7 @@ void Error::PrintErrorStringInfo(const std::string& str) const
 			<< str << "\n";
 		PrintPointerToErr(str);
 		break;
-	case INVALID_EXPRESSION:
+	case INVALID_EXPRESSION: 
 		std::cout << "Invalid expression"
 			<< str << "\n";
 		PrintPointerToErr(str);
