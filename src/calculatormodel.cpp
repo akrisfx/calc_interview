@@ -166,7 +166,7 @@ void CalculatorModel::ParseNumber(const std::string& problem, int& step)
 }
 
 // Parse and convert string to stack
-void CalculatorModel::ParseString(std::string& problem)
+void CalculatorModel::ParseString(const std::string& problem)
 {
 	for (int step = 0; step < problem.length(); step++)
 	// off-top: очень хочеться верить что branch optimisation тут отрабатывает
@@ -404,13 +404,12 @@ void CalculatorModel::MainCalculation()
 	result_ = numbers.top().value;
 }
 
-Error CalculatorModel::RunModelCalculation(std::string problem,
-                                           std::string value)
+Error CalculatorModel::RunModelCalculation(const std::string& problem)
 {
 	ValidateString(problem);
 	if (error_.err_type == NO_ERROR)
 	{
-		ReplaceBrackets(problem);
+		//ReplaceBrackets(problem);
 		//PasteValue(problem, value);
 		ParseString(problem);
 		MainCalculation();

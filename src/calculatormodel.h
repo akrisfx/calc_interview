@@ -23,7 +23,7 @@ public:
 
 	void SetError(Error number) { error_ = number; }
 
-	Error RunModelCalculation(std::string problem, std::string value);
+	Error RunModelCalculation(const std::string& problem);
 
 private:
 	Error error_;
@@ -39,7 +39,7 @@ private:
 	void ParseOperators(std::string& problem, int& step);
 	void ValidateString(const std::string& problem);
 	void PasteValue(std::string& problem, std::string& number);
-	void ParseString(std::string& problem);
+	void ParseString(const std::string& problem);
 	// Stack and Calculation Functions
 	void ReverseStack();
 	int IsFunctionOrBracket();

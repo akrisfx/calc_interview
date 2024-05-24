@@ -1,30 +1,46 @@
 #include "error.h"
 
-std::string Error::GetErrorStringInfo()
+#include <iomanip>
+#include <iostream>
+
+void Error::PrintErrorStringInfo(const std::string& str) const
 {
+	std::cout << "Error: ";
 	switch (err_type)
 	{
 	case NO_ERROR:
-		return "Expression has no errors";
+		std::cout << "Expression has no errors\n";
 		break;
 	case INVALID_COUNT_BRACKETS:
-		return "Invalid count of brackets";
+		std::cout << "Invalid count of brackets\n";
 		break;
 	case INVALID_DOT:
-		return "Invalid dot position";
+		std::cout << "Invalid dot position\n"
+				  << str << "\n";
+		
+		PrintPointerToErr(str);
 		break;
 	case EMPTY_BRACKETS:
-		return "Empty Brackets";
+		std::cout << "Empty Brackets"
+			<< str << "\n";
+		PrintPointerToErr(str);
 		break;
 	case INVALID_EXPRESSION:
-		return "Invalid expression";
+		std::cout << "Invalid expression"
+			<< str << "\n";
+		PrintPointerToErr(str);
 		break;
-	default: 
-		return "";
+	default:;
 	}
 }
 
 int Error::GetErrorIndex() const
 {
 	return err_place;
+}
+
+void Error::PrintPointerToErr(const std::string& str) const
+{
+	std::cout << std::setfill('_') << std::setw(err_place + 1) << "^" << std::setfill('_')
+		<< std::setw(str.size() - err_place) << "\n";
 }

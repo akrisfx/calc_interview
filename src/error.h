@@ -16,11 +16,13 @@ class Error final
 public:
 	Error();
 	Error(err_type_t type, std::size_t place);
-	std::string GetErrorStringInfo();
+	void PrintErrorStringInfo(const std::string& str) const;
 	int GetErrorIndex() const;
 
 	err_type_t err_type;
 	int err_place;
+private:
+	void PrintPointerToErr(const std::string& str) const;
 };
 
 inline Error::Error():  err_type(err_type_t::NO_ERROR), err_place(0)

@@ -1,6 +1,7 @@
 #include <iostream>
 #include "calculatormodel.h"
 #include "var_resolver.h"
+#include <regex>
 
 int main(int argc, char** argv)
 {
@@ -14,15 +15,15 @@ int main(int argc, char** argv)
 	if(!str.empty())
 	{
 		auto calc = CalculatorModel();
-		auto result = calc.RunModelCalculation(str, "3.145");
+		auto result = calc.RunModelCalculation(str);
 		if(result.err_type == NO_ERROR)
 		{
 			std::cout << calc.GetResult();
 		}
 		else
 		{
-			std::cout << result.GetErrorStringInfo();
+			result.PrintErrorStringInfo(str);
 		}
 	}
-
+	return 0;
 }
