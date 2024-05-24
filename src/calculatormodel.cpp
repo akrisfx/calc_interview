@@ -408,14 +408,12 @@ Error CalculatorModel::RunModelCalculation(std::string problem,
                                            std::string value)
 {
 	ValidateString(problem);
-	if (error_.err_type != NO_ERROR)
+	if (error_.err_type == NO_ERROR)
 	{
 		ReplaceBrackets(problem);
-		PasteValue(problem, value);
+		//PasteValue(problem, value);
 		ParseString(problem);
 		MainCalculation();
-	} else
-	{
-		return error_;
 	}
+	return error_;
 }

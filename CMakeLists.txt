@@ -6,14 +6,16 @@ set(CMAKE_CXX_STANDARD 20)
 project(hello_world)			# Название проекта
 
 set(SOURCE_EXE 
-	calculatormodel.cpp
-	error.cpp
+	"src/calculatormodel.cpp"
+	"src/error.cpp"
+	"src/var_resolver.cpp"
 )		# Установка переменной со списком исходников для исполняемого файла
 
 #set(SOURCE_LIB foo.cpp)			# Тоже самое, но для библиотеки
 
 #add_library(foo STATIC ${SOURCE_LIB})	# Создание статической библиотеки с именем foo
 
-add_executable(main ${SOURCE_EXE} "main.cpp")	# Создает исполняемый файл с именем main
+add_executable(main ${SOURCE_EXE} "src/main.cpp")	# Создает исполняемый файл с именем main
+target_include_directories(main PRIVATE thirdparty/cli11)
 
 #target_link_libraries(main foo)		# Линковка программы с библиотекой

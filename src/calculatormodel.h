@@ -6,6 +6,8 @@
 #include <cstring>
 #include <iostream>
 #include <stack>
+#include <unordered_map>
+
 #include "token.h"
 #include "calc.h"
 #include "error.h"
@@ -45,6 +47,7 @@ private:
 	int IsBracket(std::stack<Token>& numbers);
 	void Calculate(std::stack<Token>& numbers, int operation);
 	void ReplaceBrackets(std::string& problem);
+	std::unordered_map<std::string, std::string> constants_ = {std::make_pair("PI", "3.14")};
 };
 
 #endif  // SRC_MODEL_CALCULATORMODEL_H
