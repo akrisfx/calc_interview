@@ -1,6 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
-set(CMAKE_CXX_STANDARD 20)
-								
+set(CMAKE_CXX_STANDARD 20)				
 								
 
 project(hello_world)			# Название проекта
@@ -15,7 +14,7 @@ set(SOURCE_EXE
 
 #add_library(foo STATIC ${SOURCE_LIB})	# Создание статической библиотеки с именем foo
 
-add_executable(main ${SOURCE_EXE} "src/main.cpp")	# Создает исполняемый файл с именем main
-target_include_directories(main PRIVATE thirdparty/cli11)
+add_executable(calc ${SOURCE_EXE} "src/main.cpp")	# Создает исполняемый файл с именем main
+target_include_directories(calc PRIVATE thirdparty/cli11)
 
 #target_link_libraries(main foo)		# Линковка программы с библиотекой
