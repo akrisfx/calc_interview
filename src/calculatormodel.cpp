@@ -169,8 +169,8 @@ void CalculatorModel::ParseNumber(const std::string& problem, int& step)
 void CalculatorModel::ParseString(const std::string& problem)
 {
 	for (int step = 0; step < problem.length(); step++)
-	// off-top: очень хочеться верить что branch optimisation тут отрабатывает
-	// и мне не нужно в каждой проверке continue ставить
+	// off-top: очень хочеться верить что branch optimisation тут отрабатывает,
+	// и мне не нужно в каждой проверке continue ставить.
 	{
 		if (problem[step] == ' ') //spaghetti 
 		{
