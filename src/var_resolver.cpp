@@ -2,25 +2,33 @@
 #include <regex>
 #include <unordered_map>
 
+std::pair<std::string, std::string> ParseVar(const std::string& input)
+{
+	auto pos = input.find('=');
+	if (pos == std::string::npos) {
+		throw CLI::ValidationError("Invalid format for variable: " + input);
+	}
+	std::string name = input.substr(0, pos);
+	std::string value = input.substr(pos + 1);
+	return std::make_pair(name, value);
+}
 
 int VarResolver::SetCliArgs(int argc, char** argv)
 {
-	std::unordered_map<std::string, std::string> variables = {};
+	//std::unordered_map<std::string, std::string> variables = {};
 
-	app_.add_option("expression_", expression_, "Math expression_")
+	app_.add_option("expression_", expression_, "Math expression, if you want to put vars, you must use () for vars. (x) * 2 + (y)")
 		->required();
 
-	// Опция для передачи переменных в формате "имя=значение"
-	auto varOption = app_.add_option_function<std::pair<std::string, std::string>>(
-		"--var",
-		[&variables](const std::pair < std::string, std::string >& var) {
-			variables[var.first] = var.second;
-		},
-		"Variable on format 'name=value'"
-	)->expected(-1); // -1 означает, что опция может быть указана неограниченное число раз
+	std::vector<std::string> var_strings;
+	app_.add_option("--var", var_strings, "Variable in the format 'name=value'")->take_all();
 
 	CLI11_PARSE(app_, argc, argv);
-	vars_ = (variables);
+	for (const auto& var_string : var_strings) {
+		auto var = ParseVar(var_string);
+		vars_[var.first] = var.second;
+	}
+	//vars_ = (variables);
 
 	return 0;
 

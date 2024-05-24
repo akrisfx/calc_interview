@@ -16,7 +16,6 @@ public:
 
 private:
 	CLI::App app_{ "Simple CLI Calculator" };
-
 	std::string expression_;
 	std::unordered_map<std::string, std::string> vars_ = {};
 	void ReplaceBrackets(std::string& str_expr);
