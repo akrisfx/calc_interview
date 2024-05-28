@@ -41,10 +41,19 @@ void VarResolver::Resolve()
 	{
 		const auto str_to_replace = "[(]" + name + "[)]";
 		if (auto it = const_vals.find(val); it != const_vals.end())
-			ReplaceSubstring(str_to_replace, "(" + it->second + ")");
+			ReplaceSubstring(name, "(" + it->second + ")");
 		else
 			ReplaceSubstring(str_to_replace, "(" + val + ")");
 	}
+	for (const auto& [name, val] : const_vals)
+	{
+		const auto str_to_replace = "[(]" + name + "[)]";
+		if (auto it = const_vals.find(name); it != const_vals.end())
+			ReplaceSubstring(name, it->second );
+		/*else
+			ReplaceSubstring(str_to_replace, "(" + val + ")");*/
+	}
+	std::cout << expression_ << std::endl;
 }
 
 void VarResolver::ReplaceBrackets(std::string& str_expr)

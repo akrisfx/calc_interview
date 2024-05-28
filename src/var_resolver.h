@@ -3,6 +3,7 @@
 #include "CLI11.hpp"
 #include <string>
 #include <unordered_map>
+#include <numbers>
 
 
 class VarResolver
@@ -23,7 +24,7 @@ private:
 
 
 	const std::unordered_map<std::string, std::string> const_vals = {
-		std::make_pair("PI", "3.14")
+		std::make_pair("PI", std::to_string(std::numbers::pi))
 	};
 };
 #endif 
